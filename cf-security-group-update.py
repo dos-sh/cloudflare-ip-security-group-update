@@ -1,17 +1,15 @@
 import os
 import boto3
 import json
-import urllib3
-
-
+import urllib.request
+ 
 def get_cloudflare_ip_list():
     """ Call the CloudFlare API and return a list of IPs """
-    http = urllib3.PoolManager()
-    response = http.request('GET', 'https://api.cloudflare.com/client/v4/ips')
-    temp = json.loads(response.data.decode('utf-8'))
-    if 'result' in temp:
-        return temp['result']
-    raise Exception("Cloudflare response error")
+    with urllib.request.urlopen(r'https://api.cloudflare.com/client/v4/ips') as resp:
+        temp = json.loads(resp.read())
+        if 'result' in temp:
+            return temp['result']
+        raise Exception("Cloudflare response error")
 
 def get_aws_s3_bucket_policy(s3_id):
     """ Return the Policy of an S3 """
