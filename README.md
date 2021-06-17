@@ -7,8 +7,6 @@ update an AWS Security Group and S3 Policies.
 It was originally written by John McCracken (johnmccuk@gmail.com), 
 updated by Ryan Gibbons (rtgibbons) and Endrigo Antonini (antonini).
 
-Ported to Python 3 by David Connell (dconnell@dos.sh)
-
 Instructions
 ------------
 

@@ -2,10 +2,10 @@ import os
 import boto3
 import json
 import urllib.request
- 
+
 def get_cloudflare_ip_list():
     """ Call the CloudFlare API and return a list of IPs """
-    with urllib.request.urlopen(r'https://api.cloudflare.com/client/v4/ips') as resp:
+    with urllib.request.urlopen('https://api.cloudflare.com/client/v4/ips') as resp:
         temp = json.loads(resp.read())
         if 'result' in temp:
             return temp['result']
